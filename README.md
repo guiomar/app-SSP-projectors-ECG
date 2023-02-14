@@ -15,8 +15,62 @@ This is the repository of a Brainlife App to compute SSP (signal-space projectio
 
 1) Input file is:
     * `meg/fif` meg data file
+    
+2) Input parameters are:
+* 
+* `tmin` Time before event in seconds.
 
-2) Ouput files are:
+* `tmax`Time after event in seconds.
+
+* `n_grad`Number of SSP vectors for gradiometers.
+
+* `n_mag` Number of SSP vectors for magnetometers.
+
+* `n_eeg` Number of SSP vectors for EEG.
+
+* `l_freq` Filter low cut-off frequency for the data channels in Hz.
+
+* `h_freq` Filter high cut-off frequency for the data channels in Hz.
+
+* `average` Compute SSP after averaging. Default is True.
+
+* `filter_length` Number of taps to use for filtering.
+
+* `n_jobs` The number of jobs to run in parallel. If -1, it is set to the number of CPU cores. Requires the joblib package. None (default) is a marker for ‘unset’ that will be interpreted as n_jobs=1 (sequential execution) unless the call is performed under a joblib.parallel_backend() context manager that sets another value for n_jobs.
+
+* `ch_name` Channel to use for ECG detection (Required if no ECG found).
+
+* `reject` Epoch rejection configuration.
+
+* `flat` Epoch flat configuration (see Epochs).
+
+* `bads` List with (additional) bad channels.
+
+* `avg_ref` Add EEG average reference proj.
+
+* `no_proj` Exclude the SSP projectors currently in the fiff file.
+
+* `event_id` ID to use for events.
+
+* `ecg_l_freq` Low pass frequency applied to the ECG channel for event detection.
+
+* `ecg_h_freq` High pass frequency applied to the ECG channel for event detection.
+
+* `tstart` Start artifact detection after tstart seconds.
+
+* `qrs_threshold` Between 0 and 1. qrs detection threshold. Can also be “auto” to automatically choose the threshold that generates a reasonable number of heartbeats (40-160 beats / min).
+
+* `filter_method` Method for filtering (‘iir’ or ‘fir’).
+
+* `iir_params`Dictionary of parameters to use for IIR filtering. See mne.filter.construct_iir_filter for details. If iir_params is None and method=”iir”, 4th order Butterworth will be used.
+
+* `copy` If False, filtering raw data is done in place. Defaults to True.
+
+* `return_drop_log` If True, return the drop log.
+
+* `meg` Can be ‘separate’ (default) or ‘combined’ to compute projectors for magnetometers and gradiometers separately or jointly. If ‘combined’, n_mag == n_grad is required and the number of projectors computed for MEG will be n_mag.
+
+3) Ouput files are:
     * `ECG projectors`
     * a plot of the ECG projectors
    
