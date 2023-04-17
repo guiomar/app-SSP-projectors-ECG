@@ -9,39 +9,27 @@
 import os
 import json
 import mne
+import helper
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.image
 
-
-# Current path
-__location__ = os.path.realpath(
-    os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 # Load brainlife config.json
 with open('config.json','r') as config_f:
-    config = json.load(config_f)
+    config = helper.convert_parameters_to_None(json.load(config_f))
 
 # == LOAD DATA ==
-fname = config['fif']
+fname = config['mne']
 raw = mne.io.read_raw_fif(fname, verbose=False)
 
-
-# ecg_projs, ecg_events = mne.preprocessing.compute_proj_ecg(raw, n_grad=1, n_mag=1, n_eeg=0,
-#                                                          average=True)
-ecg_projs, ecg_events = mne.preprocessing.compute_proj_ecg(raw, None, config['tmin'], config['tmax'], config['n_grad'],
-            config['n_mag'], config['n_eeg'], config['l_freq'], config['h_freq'], config['average'], config['filter_length'], -1, None, None, None, [],
-            config['avg_ref'], config['no_proj'], config['event_id'], config['ecg_l_freq'], config['ecg_h_freq'], config['tstart'],
-            config['qrs_threshold'], config['filter_method'], None, config['copy'], config['return_drop_log'], config['meg'])
-
-
-# ecg_projs, ecg_events = mne.preprocessing.compute_proj_ecg(raw, config['tmin'], config['tmax'], config['n_grad'],
-#                         config['n_mag'], config['n_eeg'], config['l_freq'], config['h_freq'], config['average'], config['filter_length'], config['ch_name'],
-#                        config['avg_ref'], config['no_proj'], config['event_id'], config['ecg_l_freq'], config['ecg_h_freq'], config['tstart'],
-#                        config['qrs_threshold'], config['filter_method'], config['iir_params'], config['copy'], config['return_drop_log'], config['meg'])
-
-
+# parameters:
+# raw_event is unused
+ecg_projs, ecg_events = mne.preprocessing.compute_proj_ecg(raw, raw_event=None, tmin=config['tmin'], tmax=config['tmax'], n_grad=config['n_grad'],
+            n_mag=config['n_mag'], n_eeg=config['n_eeg'], l_freq=config['l_freq'], h_freq=config['h_freq'], average=config['average'], filter_length=config['filter_length'], 
+            n_jobs=-1, ch_name=config['ch_name'], reject=None, flat=None, bads=[],
+            avg_ref=config['avg_ref'], no_proj=config['no_proj'], event_id=config['event_id'], ecg_l_freq=config['ecg_l_freq'], ecg_h_freq=config['ecg_h_freq'], tstart=config['tstart'],
+            qrs_threshold=config['qrs_threshold'], filter_method=config['filter_method'], iir_params=None, copy=False, return_drop_log=True, meg=config['meg'])
 
 mne.write_proj('out_dir/proj.fif', ecg_projs, overwrite=True)
 
