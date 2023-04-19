@@ -1,7 +1,6 @@
 
 {
   "mne": "/network/lustre/iss02/cenir/analyse/meeg/BRAINLIFE/datasets/mne-datasets/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif",
-  "raw_event": "",
   "tmin":-0.2,
   "tmax":0.4,
   "n_grad":2,
