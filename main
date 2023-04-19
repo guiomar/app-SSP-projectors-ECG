@@ -14,30 +14,3 @@ mkdir -p out_figs
 singularity exec docker://brainlife/mne:1.2.1 python3 main.py
 
 
-cat << EOF > product.json
-{
-    "brainlife": [
-       { 
-           "type": "image/png", 
-	       "name": "ECG projectors",
-           "base64": "$(base64 -w 0 out_figs/ecg_projectors.png)"
-       },
-       {
-           "type": "image/png",
-	       "name": " Heartbeat artifacts manifest across Magnetometers",
-           "base64": "$(base64 -w 0 out_figs/meg.png)"
-       },
-       {
-           "type": "image/png",
-	       "name": " Heartbeat artifacts manifest across Gradiometers",
-           "base64": "$(base64 -w 0 out_figs/grad.png)"
-       },
-
-       {
-           "type": "image/png",
-	       "name": " Heartbeat artifacts manifest across EEG",
-           "base64": "$(base64 -w 0 out_figs/eeg.png)"
-       }
-]
-}
-EOF
