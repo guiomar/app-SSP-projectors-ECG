@@ -51,6 +51,7 @@ f = ecg_evoked.plot_joint()
 
 report = mne.Report(title='SSP ECG Projectors')
 report.add_projs(info=raw.info, projs=ecg_projs, title = 'SSP ECG Projectors')
+[report.add_figure(fig, f'ECG Evoked {i}') for i, fig in enumerate(f)]
 
 report.save('out_report/report_ssp.html', overwrite=True)
 
