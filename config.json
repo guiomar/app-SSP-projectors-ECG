@@ -1,15 +1,15 @@
 
 {
-  "fif": "/network/lustre/home/saeed.zahran/mne_data/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif",
+  "mne": "/network/lustre/iss02/cenir/analyse/meeg/BRAINLIFE/datasets/mne-datasets/MNE-sample-data/MEG/sample/sample_audvis_filt-0-40_raw.fif",
   "raw_event": "",
   "tmin":-0.2,
   "tmax":0.4,
-  "n_grad":1,
+  "n_grad":2,
   "n_mag":2,
   "n_eeg":2,
   "l_freq":1.0,
   "h_freq":35.0,
-  "ch_name":"s",
+  "ch_name":"",
   "average":true,
   "filter_length":"10s",
   "avg_ref": false,
@@ -20,7 +20,7 @@
   "tstart":0.0,
   "qrs_threshold":"auto",
   "filter_method":"fir",
-  "iir_params": " ",
+  "iir_params":"",
   "copy":true,
   "return_drop_log":false,
   "meg":"separate"
