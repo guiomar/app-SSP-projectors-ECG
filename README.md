@@ -1,12 +1,12 @@
 
 
-# SSP projectors ECG
+# SSP projectors ECG for epoched data 
 
 
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.672-blue.svg)](https://doi.org/10.25663/brainlife.app.672)
 
-Brainlife App to compute SSP (signal-space projection) vectors for ECG artifacts using `mne.preprocessing.compute_proj_ecg` function.
+Brainlife App to compute SSP (signal-space projection) vectors for ECG artifacts for epoched data using `mne.preprocessing.compute_proj_ecg` function.
 
 
 
@@ -74,7 +74,8 @@ Brainlife App to compute SSP (signal-space projection) vectors for ECG artifacts
    
 
 ## Authors
-- Saeed ZAHRAN(saeedzahranutc@gmail.com)
+- Antonio Caulin ()
+- Guiomar Niso ()
 - Maximilien Chaumon (maximilien.chaumon@icm-institute.org)
 
 ## Citations
